@@ -7,7 +7,7 @@
     Lovely smile comrade
 
 #### Comedian:
-    Gary Giggle
+    Gary Giggle, headliner at the Rictus-Fictus 
 
 #### Audience members (six needed):
     Lisa - “Lisa’s goldfish died of starvation six days later”
@@ -20,7 +20,6 @@
     Ross (left) - "give us a smile bud"
     Jason (right) - "okay, now laugh for us"
     Ross - "in you go mate, he's only got three minutes left"
-
 
 #### Lives(bouncer interventions):
     it’s not that kinda club, buddy
