@@ -2,11 +2,18 @@
 
 
 #### Smile tags:
-    Smile, it might never happen!
-    you have a lovely smile you seem happy 
-    do you come here often
-    infectious smile, friend!
-    Lovely smile comrade
+    - smile, it might never happen!
+    - you have a lovely smile
+    - you seem happy 
+    - do you come here often
+    - infectious smile, friend!
+    - Lovely smile comrade
+    - i love your teeth!
+    - i had a smile like yours, once upon a time
+    - are those your baby teeth?
+    - a smile is a curve that sets everything straight!
+    - life is short, smile while you still have teeth.
+
 
 #### Comedian:
     Gary Giggle, headliner at the Rictus-Fictus 
