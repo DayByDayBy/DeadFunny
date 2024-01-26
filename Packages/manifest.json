@@ -1,0 +1,19 @@
+{
+  "scopedRegistries": [
+    {
+      "name": "Keijiro",
+      "url": "https://registry.npmjs.com",
+      "scopes": [
+        "jp.keijiro"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.unity.ai.navigation": "1.1.4",
+    "com.unity.ugui": "1.0.0",
+    "jp.keijiro.klak.testtools": "1.0.4",
+    "jp.keijiro.mediapipe.blazeface": "1.2.0",
+    "jp.keijiro.mediapipe.facelandmark": "1.1.0",
+    "jp.keijiro.mediapipe.iris": "1.2.0"
+  }
+}
