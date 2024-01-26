@@ -3,10 +3,15 @@ using UnityEngine.UI;
 using Unity.Mathematics;
 using Klak.TestTools;
 using MediaPipe.FaceMesh;
+using System.Collections.Generic;
 
 public sealed class Visualizer : MonoBehaviour
 {
-    #region Editable attributes
+    #region member variables
+
+    public class MouthDimensions {
+        public float width, height;
+    }
 
     [SerializeField] ImageSource _source = null;
     [Space]
@@ -17,6 +22,8 @@ public sealed class Visualizer : MonoBehaviour
     [SerializeField] RawImage _faceUI = null;
     [SerializeField] RawImage _leftEyeUI = null;
     [SerializeField] RawImage _rightEyeUI = null;
+
+    public List<Texture2D> _screenshots = new List<Texture2D>();
 
     public bool _faceSet = false;
     public float _mouthWidth, _mouthHeight;
@@ -32,7 +39,7 @@ public sealed class Visualizer : MonoBehaviour
 
     #endregion
 
-    #region MonoBehaviour implementation
+    #region standard unity methods
 
     void Start()
     {
@@ -40,28 +47,20 @@ public sealed class Visualizer : MonoBehaviour
         _material = new Material(_shader);
     }
 
-    void Update() {
-        var mouthTop = _pipeline.GetVertexPosition(13);
-            var mouthBottom = _pipeline.GetVertexPosition(14);
-            // get the distance between them to get if the user is smiling
-            var mouthVerticalDistance = Vector3.Distance(mouthTop, mouthBottom);
-            // get the mouth left and right points
-            var mouthLeft = _pipeline.GetVertexPosition(61);
-            var mouthRight = _pipeline.GetVertexPosition(291);
-            // get the distance between them to get if the user is smiling
-            var mouthHorizontalDistance = Vector3.Distance(mouthLeft, mouthRight);
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            _mouthHeight = mouthVerticalDistance;
-            _mouthWidth = mouthHorizontalDistance;
-            _faceSet = true;
-        }
-    if (_faceSet)
+    void Update()
     {
-        // calculate the similarity between the mouth height and width averages against the user's mouth
-        _similarity = (mouthVerticalDistance / _mouthHeight + mouthHorizontalDistance / _mouthWidth) / 2;
-    }
+       MouthDimensions mouthDimensions = GetMouthDimensions();
 
+        // calculate the similarity between the mouth height and width averages against the user's mouth
+        if (_faceSet)
+        {
+            _similarity = (mouthDimensions.height / _mouthHeight + mouthDimensions.width / _mouthWidth) / 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetScreenshot();
+        }
     }
 
     void OnDestroy()
@@ -131,6 +130,45 @@ public sealed class Visualizer : MonoBehaviour
         _material.SetBuffer("_Vertices", _pipeline.RawRightEyeVertexBuffer);
         _material.SetPass(3);
         Graphics.DrawProceduralNow(MeshTopology.Lines, 64, 1);
+    }
+
+    #endregion
+
+    #region public methods
+
+    public MouthDimensions GetMouthDimensions()
+    {
+        Vector3 mouthTop = _pipeline.GetVertexPosition(13);
+        Vector3 mouthBottom = _pipeline.GetVertexPosition(14);
+        // get the distance between them to get if the user is smiling
+        float mouthVerticalDistance = Vector3.Distance(mouthTop, mouthBottom);
+        // get the mouth left and right points
+        Vector3 mouthLeft = _pipeline.GetVertexPosition(61);
+        Vector3 mouthRight = _pipeline.GetVertexPosition(291);
+        // get the distance between them to get if the user is smiling
+        float mouthHorizontalDistance = Vector3.Distance(mouthLeft, mouthRight);
+
+        return new MouthDimensions { height = mouthVerticalDistance, width = mouthHorizontalDistance };
+    }
+
+    public void SetSmile()
+    {
+        MouthDimensions mouthDimensions = GetMouthDimensions();
+         _mouthHeight = mouthDimensions.height;
+        _mouthWidth = mouthDimensions.width;
+        _faceSet = true;
+    }
+
+    public void GetScreenshot()
+    {
+        // get all pixels and map them to a new texture
+        Texture2D texture = new Texture2D(_pipeline.CroppedFaceTexture.width, _pipeline.CroppedFaceTexture.height);
+        Texture faceTexture  = _pipeline.CroppedFaceTexture;
+        // convert texture to texture2d
+        RenderTexture.active = (RenderTexture)faceTexture;
+        texture.ReadPixels(new Rect(0, 0, faceTexture.width, faceTexture.height), 0, 0);
+        texture.Apply();
+        _screenshots.Add(texture);
     }
 
     #endregion
