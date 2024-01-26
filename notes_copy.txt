@@ -1,0 +1,63 @@
+Mechanics: 
+
+Stabbing 
+
+Laughter recognition 
+
+Smile recognition 
+
+Photo on the moment of stab 
+
+ 
+
+MOSCOW 
+
+ 
+
+Must: 
+
+Stabbing 
+
+Audible laughter recognition 
+
+Photo of the moment of stabbing 
+
+ 
+
+Should: 
+
+Smile recognition 
+
+Player needs to be facing their target, the target needs to be facing away. Basically, the victim is looking at the stage. Otherwise, the player would be caught. 
+
+The merc’d people do not trigger the other people because the janitor keeps the floors squeaky clean. So, if a successful merc has occurred, a character spawns which removes the body without any questions asked. 
+
+Could: 
+
+Putting the player’s psychotic laughing face next to the body they killed and a brief story of the victims’ life which should make the player feel bad. 
+
+ 
+
+ 
+
+Mechanics explained: 
+
+Player moves with WASD on the X and Z axis. One button to execute the stabbings. 
+
+Win condition – killing all the targets and finally the comedian who stole your content. 
+
+Stabbing – the player needs to kill their targets. They can only kill their targets when the room is filled with laughter, so the screams of their victims are covered by the noise. 
+
+Audible laughter recognition – the player needs to laugh when the room laughs, so that they can help cover the screams of the victim, but also to not raise suspicion as to why they’re not laughing. If the player doesn’t laugh, they will be caught.  
+
+Photo of the moment of stabbing – the game takes a profile photo of the player at the moment of stabbing, to have the player look at how their face would look like if they were a psychopath.  
+
+Smile recognition – the players needs to be always smiling to fit in with the audience, to maintain cover and not raise suspicion. 
+
+There is a target counter. The targets are decided randomly, and they are the most audible npcs. The npcs will have visual audio signals to inform the player which are the targets, and which are not.  
+
+ 
+
+ 
+
+Fungus chat box management system. 
