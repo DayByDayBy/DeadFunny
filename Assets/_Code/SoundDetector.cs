@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundDetector : MonoBehaviour
+public class SoundDetector : Singleton<SoundDetector>
 {
 
     #region member variables
@@ -48,6 +48,18 @@ public class SoundDetector : MonoBehaviour
     public float GetVolume()
     {
         return _vol;
+    }
+
+    public bool MaxVolumeSet()
+    {
+        return _maxVolume != 0;
+    }
+
+    public float GetVolumeNormalized()
+    {
+        if (_maxVolume == 0)
+            return 0;
+        return _vol / _maxVolume;
     }
 
     public void SetMaxVolume()

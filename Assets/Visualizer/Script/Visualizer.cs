@@ -5,7 +5,7 @@ using Klak.TestTools;
 using MediaPipe.FaceMesh;
 using System.Collections.Generic;
 
-public sealed class Visualizer : MonoBehaviour
+public sealed class Visualizer : Singleton<Visualizer>
 {
     #region member variables
 
