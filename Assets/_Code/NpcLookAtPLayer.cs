@@ -10,11 +10,10 @@ public class NpcLookAtPLayer : MonoBehaviour
     public bool isLookingAt = false;
      Transform defaulTransform;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        defaulTransform = transform;
+        playerCharacter = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void StartLookAtPlayer()
@@ -25,14 +24,15 @@ public class NpcLookAtPLayer : MonoBehaviour
     public void StopLookingAt()
     {
         isLookingAt = false;
-        
-        
     }
 
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (!playerCharacter)
+            return;
+
         if (isLookingAt)
         {
             myTime += Time.deltaTime;
@@ -47,8 +47,6 @@ public class NpcLookAtPLayer : MonoBehaviour
             myTime = 0f;
             transform.rotation = defaulTransform.rotation;
         }
-
-
 
         Transform headTransform = transform;
         

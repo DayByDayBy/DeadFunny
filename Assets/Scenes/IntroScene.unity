@@ -774,7 +774,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1289098666}
   selectedCommands:
-  - {fileID: 1289098671}
+  - {fileID: 1289098672}
   variables: []
   description: bouncer camera configuration
   stepPause: 0
@@ -1011,8 +1011,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 33
-    y: 30
+    x: 38
+    y: 29
     width: 102
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}

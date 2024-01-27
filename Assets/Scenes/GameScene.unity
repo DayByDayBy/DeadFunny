@@ -579,6 +579,8 @@ GameObject:
   - component: {fileID: 477806180}
   - component: {fileID: 477806179}
   - component: {fileID: 477806178}
+  - component: {fileID: 477806182}
+  - component: {fileID: 477806181}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -687,7 +689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alive: 1
-  _speed: 1
 --- !u!82 &477806179
 AudioSource:
   m_ObjectHideFlags: 0
@@ -806,6 +807,35 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &477806181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477806173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133109dabce1f43b2aa52a07867e4e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxWanderDistance: 15
+  _speed: 1
+--- !u!114 &477806182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477806173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f61b7981931dd4f0ba2243bccaf9828c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _voiceLines: []
+  _minTimeBetweenVoiceLines: 5
+  _maxTimeBetweenVoiceLines: 10
 --- !u!1 &754164755
 GameObject:
   m_ObjectHideFlags: 0
