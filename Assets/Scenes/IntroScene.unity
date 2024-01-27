@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+  m_Texture: {fileID: 2800000, guid: 9bdedfa4650174106a3115624f193b99, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -738,6 +738,8 @@ GameObject:
   - component: {fileID: 1289098666}
   - component: {fileID: 1289098665}
   - component: {fileID: 1289098664}
+  - component: {fileID: 1289098672}
+  - component: {fileID: 1289098671}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -771,7 +773,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1289098666}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1289098671}
   variables: []
   description: bouncer camera configuration
   stepPause: 0
@@ -1010,7 +1013,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 33
     y: 30
-    width: 111
+    width: 102
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1020,6 +1023,8 @@ MonoBehaviour:
   eventHandler: {fileID: 1289098664}
   commandList:
   - {fileID: 1289098665}
+  - {fileID: 1289098672}
+  - {fileID: 1289098671}
   suppressAllAutoSelections: 0
 --- !u!114 &1289098667
 MonoBehaviour:
@@ -1147,6 +1152,45 @@ MonoBehaviour:
   - {fileID: 1289098669}
   - {fileID: 1289098668}
   suppressAllAutoSelections: 0
+--- !u!114 &1289098671
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289098653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 16
+  indentLevel: 0
+  _sceneName:
+    stringRef: {fileID: 0}
+    stringVal: GameScene
+  loadingImage: {fileID: 0}
+  sceneNameOLD: 
+--- !u!114 &1289098672
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289098653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 15
+  indentLevel: 0
+  duration: 1
+  targetAlpha: 1
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
 --- !u!1 &1364790756
 GameObject:
   m_ObjectHideFlags: 0
