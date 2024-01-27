@@ -6,7 +6,7 @@ using MediaPipe.FaceMesh;
 using System.Collections.Generic;
 using Fungus;
 
-public sealed class Visualizer : Singleton<Visualizer>
+public sealed class Visualizer : Madd.Singleton<Visualizer>
 {
     #region member variables
 
@@ -14,7 +14,7 @@ public sealed class Visualizer : Singleton<Visualizer>
         public float width, height;
     }
 
-    [SerializeField] ImageSource _source = null;
+    [SerializeField] CustomImageSource _source = null;
     [Space]
     [SerializeField] ResourceSet _resources = null;
     [SerializeField] Shader _shader = null;
@@ -45,6 +45,7 @@ public sealed class Visualizer : Singleton<Visualizer>
 
     void Start()
     {
+        _source = GetComponent<CustomImageSource>();
         _pipeline = new FacePipeline(_resources);
         _material = new Material(_shader);
     }

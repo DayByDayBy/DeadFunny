@@ -13,7 +13,9 @@ public class NpcLookAtPLayer : MonoBehaviour
     void Start()
     {
         defaulTransform = transform;
-        playerCharacter = GameObject.FindGameObjectWithTag("Player").transform;
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+            playerCharacter = player.transform;
     }
 
     public void StartLookAtPlayer()

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Entity))]
+[RequireComponent(typeof(Animator))]
 public class EntityWander : MonoBehaviour
 {
     #region member variables
@@ -12,15 +14,17 @@ public class EntityWander : MonoBehaviour
     public System.Action OnWanderCompleted;
 
     private Entity _entity;
-    private UnityEngine.AI.NavMeshAgent _agent;
+    private NavMeshAgent _agent;
     private Vector3 _target, _previousTarget;
+    private Animator _animator;
 
     #endregion
 
     void Start()
     {
         _entity = GetComponent<Entity>();
-        _agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
         _agent.speed = _speed;
     }
 
@@ -41,12 +45,14 @@ public class EntityWander : MonoBehaviour
         _target = GetRandomPoint();
         _agent.SetDestination(_target);
         float distance = Vector3.Distance(transform.position, _target);
+        _animator.SetBool("IsWalking", true);
     }
 
     public void StopWandering()
     {
         _agent.SetDestination(transform.position);
         _agent.velocity = Vector3.zero;
+        _animator.SetBool("IsWalking", false);
     }
 
     private Vector3 GetRandomPoint()
@@ -54,8 +60,8 @@ public class EntityWander : MonoBehaviour
         Vector3 randomPoint = Random.insideUnitSphere * _maxWanderDistance;
         randomPoint += transform.position;
         randomPoint.y = transform.position.y;
-        UnityEngine.AI.NavMeshHit hit;
-        UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, _maxWanderDistance, 1);
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPoint, out hit, _maxWanderDistance, 1);
         return hit.position;
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 
-public class SoundDetector : Singleton<SoundDetector>
+public class SoundDetector : Madd.Singleton<SoundDetector>
 {
 
     #region member variables
