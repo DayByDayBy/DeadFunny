@@ -25,8 +25,7 @@ public class SoundUI : MonoBehaviour
         {
             _soundDetector = SoundDetector.Instance;
         }
-
-        if (_soundDetector.MaxVolumeSet())
+        else if (_soundDetector.MaxVolumeSet())
         {
             Color darkRed = new Color(0.5f, 0, 0, .1f);
             Color green = new Color(0, 1, 0, .1f);

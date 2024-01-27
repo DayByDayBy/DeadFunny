@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class SoundDetector : Singleton<SoundDetector>
 {
@@ -12,6 +13,7 @@ public class SoundDetector : Singleton<SoundDetector>
     public float _maxVolume = 0;
     public float _offset;
     public float[] _samples;
+    public bool _settingMaxVolume = false;
 
     private AudioSource _audio;
 
@@ -32,6 +34,13 @@ public class SoundDetector : Singleton<SoundDetector>
     {
         _vol = GetRMS(0) + GetRMS(1);
         _vol *= _sensitivity - _offset;
+
+        if (_settingMaxVolume)
+        {
+            _maxVolume = _vol;
+            _settingMaxVolume = false;
+            Fungus.Flowchart.BroadcastFungusMessage ("laugh_ok");
+        }
     }
 
     float GetRMS(int channel)
@@ -64,7 +73,7 @@ public class SoundDetector : Singleton<SoundDetector>
 
     public void SetMaxVolume()
     {
-        _maxVolume = _vol;
+        _settingMaxVolume = true;
     }
 
 }
