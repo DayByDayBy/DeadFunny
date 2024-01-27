@@ -19,12 +19,17 @@ public class Entity : MonoBehaviour
     {
         _entityWander = GetComponent<EntityWander>();
         _entityVoiceLines = GetComponent<EntityVoiceLines>();
-        
-       _entityVoiceLines.OnVoiceLineCompleted += OnVoiceLineCompleted;
-       _entityWander.OnWanderCompleted += OnWanderCompleted;
 
-        _entityVoiceLines.StartVoiceLines();
-        _entityWander.StartWandering();
+       if (_entityVoiceLines) 
+       {
+            _entityVoiceLines.OnVoiceLineCompleted += OnVoiceLineCompleted;
+            _entityVoiceLines.StartVoiceLines();
+       }
+       if (_entityWander)
+       {
+            _entityWander.OnWanderCompleted += OnWanderCompleted;
+            _entityWander.StartWandering();
+       }
     }
 
     void OnVoiceLineCompleted()
