@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 87037999}
   - component: {fileID: 87038000}
   - component: {fileID: 87038002}
-  - component: {fileID: 87038001}
   - component: {fileID: 87038006}
   - component: {fileID: 87038005}
   - component: {fileID: 87038004}
@@ -224,8 +223,6 @@ GameObject:
   - component: {fileID: 87038012}
   - component: {fileID: 87038011}
   - component: {fileID: 87038013}
-  - component: {fileID: 87038010}
-  - component: {fileID: 87038009}
   - component: {fileID: 87038007}
   - component: {fileID: 87038020}
   - component: {fileID: 87038021}
@@ -235,7 +232,6 @@ GameObject:
   - component: {fileID: 87038024}
   - component: {fileID: 87038026}
   - component: {fileID: 87038028}
-  - component: {fileID: 87038027}
   - component: {fileID: 87038025}
   m_Layer: 0
   m_Name: Flowchart
@@ -269,9 +265,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 87038026}
-  selectedCommands:
-  - {fileID: 87038025}
+  - {fileID: 87038008}
+  selectedCommands: []
   variables: []
   description: Fade In
   stepPause: 0
@@ -297,8 +292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 50
-    y: -149
+    x: 49
+    y: -148
     width: 91
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -307,29 +302,8 @@ MonoBehaviour:
   blockName: Fade In
   description: 
   eventHandler: {fileID: 87038002}
-  commandList:
-  - {fileID: 87038001}
+  commandList: []
   suppressAllAutoSelections: 0
---- !u!114 &87038001
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87037998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 1
-  indentLevel: 0
-  duration: 1
-  targetAlpha: 0
-  waitUntilFinished: 1
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
-  fadeTweenType: 4
 --- !u!114 &87038002
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -476,48 +450,8 @@ MonoBehaviour:
   commandList:
   - {fileID: 87038012}
   - {fileID: 87038011}
-  - {fileID: 87038010}
-  - {fileID: 87038009}
   - {fileID: 87038007}
   suppressAllAutoSelections: 0
---- !u!114 &87038009
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87037998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 12
-  indentLevel: 0
-  _duration:
-    floatRef: {fileID: 0}
-    floatVal: 1
-  durationOLD: 0
---- !u!114 &87038010
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87037998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 11
-  indentLevel: 0
-  duration: 1
-  targetAlpha: 1
-  waitUntilFinished: 1
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
-  fadeTweenType: 4
 --- !u!114 &87038011
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -867,29 +801,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 87038028}
   commandList:
-  - {fileID: 87038027}
   - {fileID: 87038025}
   suppressAllAutoSelections: 0
---- !u!114 &87038027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87037998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 21
-  indentLevel: 0
-  duration: 1
-  targetAlpha: 1
-  waitUntilFinished: 1
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
-  fadeTweenType: 4
 --- !u!114 &87038028
 MonoBehaviour:
   m_ObjectHideFlags: 0

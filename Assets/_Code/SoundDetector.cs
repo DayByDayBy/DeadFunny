@@ -47,7 +47,7 @@ public class SoundDetector : Madd.Singleton<SoundDetector>
         _vol = Mathf.Lerp(_lastVolume, _vol, .05f);
         _lastVolume = _vol;
 
-        if (_settingMaxVolume)
+        if (_settingMaxVolume && _vol > .05f)
         {
             _maxVolume = _vol;
             _settingMaxVolume = false;
