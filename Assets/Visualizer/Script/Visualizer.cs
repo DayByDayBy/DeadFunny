@@ -75,7 +75,7 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
             {
                 _mouthHeight = mouthDimensions.height;
                 _mouthWidth = mouthDimensions.width;
-                Fungus.Flowchart.BroadcastFungusMessage ("smile_ok");
+                Fungus.Flowchart.BroadcastFungusMessage("smile_ok");
                 _faceSet = true;
             }
         }

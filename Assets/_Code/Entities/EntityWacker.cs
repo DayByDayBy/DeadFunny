@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EZhex1991.EZSoftBone;
+using Fungus;
 
 public class EntityWacker : MonoBehaviour
 {
@@ -11,9 +12,14 @@ public class EntityWacker : MonoBehaviour
     public float _wackRadius = 1f;
     public float _angle = 45f;
 
+    public AudioClip _wackSound;
+    public List<AudioClip> _deathNoises = new List<AudioClip>();
+
     private GameController _gameController;
     private Animator _animator;
+    private AudioSource _audioSource;
     private bool _canWack = true;
+    private int _warnings = 1;
 
     #endregion
 
@@ -21,6 +27,7 @@ public class EntityWacker : MonoBehaviour
     {
         _gameController = GameController.Instance;
         _animator = GetComponent<Animator>();
+        _audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +54,9 @@ public class EntityWacker : MonoBehaviour
                     _gameController.ChooseNextTarget();
                     collider.GetComponent<Rigidbody>().AddForce(wackDir * _wackForce + Vector3.up * _wackForce, ForceMode.Impulse);
                     collider.GetComponent<Rigidbody>().AddTorque(wackDir * _wackForce, ForceMode.Impulse);
+                    _audioSource.clip = _wackSound;
+                    _audioSource.Play();
+                    StartCoroutine(DeathNoiseCO());
                 }
             }
         }
@@ -63,6 +73,29 @@ public class EntityWacker : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Visualizer.Instance.GetScreenshot();
         yield return new WaitForSeconds(0.5f);
-        _canWack = true;
     }
+
+    private IEnumerator DeathNoiseCO()
+    {
+        yield return new WaitForSeconds(.5f);
+        _audioSource.clip = _deathNoises[Random.Range(0, _deathNoises.Count)];
+        _audioSource.Play();
+        if (!_gameController.CanKill)
+        {
+            switch (_warnings)
+            {
+                case 1:
+                Fungus.Flowchart.BroadcastFungusMessage("warning_1");
+                break;
+                case 2:
+                Fungus.Flowchart.BroadcastFungusMessage("warning_2");
+                    break;
+                case 3:
+                Fungus.Flowchart.BroadcastFungusMessage("warning_3");
+                break;
+            }
+            _warnings++;
+        }
+        _canWack = true;
+    } 
 }

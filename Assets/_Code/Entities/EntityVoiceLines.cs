@@ -14,6 +14,7 @@ public class EntityVoiceLines : MonoBehaviour
 
     private Entity _entity;
     private AudioSource _audioSource;
+    private List<AudioClip> _availableClips = new List<AudioClip>();
 
     #endregion
 
@@ -21,6 +22,7 @@ public class EntityVoiceLines : MonoBehaviour
     {
         _entity = GetComponent<Entity>();
         _audioSource = GetComponent<AudioSource>();
+        _availableClips.AddRange(_voiceLines);
     }
 
     public void StartVoiceLines()
@@ -40,13 +42,17 @@ public class EntityVoiceLines : MonoBehaviour
             // wait for a bit
             yield return new WaitForSeconds(Random.Range(_minTimeBetweenVoiceLines, _maxTimeBetweenVoiceLines));
 
+            if (_availableClips.Count == 0)
+                _availableClips.AddRange(_voiceLines);
+
             // if you have a line to say
-            if (_voiceLines.Count > 0)
+            if (_availableClips.Count > 0)
             {
                 // say your line
-                _audioSource.clip = _voiceLines[Random.Range(0, _voiceLines.Count)];
+                _audioSource.clip = _availableClips[Random.Range(0, _voiceLines.Count)];
+                _availableClips.Remove(_audioSource.clip);
                 _audioSource.Play();
-                _audioSource.pitch = Random.Range(0.8f, 1.2f);
+                // _audioSource.pitch = Random.Range(0.8f, 1.2f);
                 yield return new WaitForSeconds(_audioSource.clip.length);
                 _audioSource.Stop();
                 _audioSource.pitch = 1f;

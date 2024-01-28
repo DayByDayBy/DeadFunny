@@ -11,6 +11,8 @@ public class GameController : Madd.Singleton<GameController>
     public Entity _currentTarget;
     public Entity _comedian;
     public List<AudioClip> _laughTracks = new List<AudioClip>();
+    public bool CanKill = false;
+    public TMPro.TextMeshProUGUI _targetUI;
 
     #endregion
 
@@ -39,6 +41,17 @@ public class GameController : Madd.Singleton<GameController>
                 entity.GetComponent<EntityWander>().StartWandering();
             }
         }
+        StartCoroutine(SmileCheckCO());
+    }
+
+    IEnumerator SmileCheckCO()
+    {
+        yield return new WaitForSeconds(2);
+        if (Visualizer.Instance._similarity < .8f)
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("smile_more");
+        }
+        StartCoroutine(SmileCheckCO());
     }
 
     void OnVoiceLineCompleted()
@@ -54,6 +67,8 @@ public class GameController : Madd.Singleton<GameController>
             entity.GetComponent<EntityWander>().FaceDirection(_comedian.transform.position);
         }
         StartCoroutine(CompleteLaughTrack());
+        CanKill = true;
+        _targetUI.text = "Kill";
     }
 
     IEnumerator CompleteLaughTrack()
@@ -72,6 +87,8 @@ public class GameController : Madd.Singleton<GameController>
             }
         }
         ChooseNextTarget();
+        CanKill = false;
+        _targetUI.text = "Wait";
     }
 
     public void ChooseNextTarget()
@@ -84,7 +101,7 @@ public class GameController : Madd.Singleton<GameController>
 
     public void RemoveTarget(Entity target)
     {
-        _targets.Remove(target);
+        _targets = _targets.FindAll(t => t != target);
         _currentTarget = null;
     }
 }
