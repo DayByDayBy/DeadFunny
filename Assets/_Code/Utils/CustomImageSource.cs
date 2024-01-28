@@ -60,7 +60,9 @@ public class CustomImageSource : MonoBehaviour
 
     public void Init()
     {
-
+        if (_webcam != null) Destroy(_webcam);
+        if (_buffer != null) Destroy(_buffer);
+        
         _buffer = new RenderTexture
             (_outputResolution.x, _outputResolution.y, 0);
 

@@ -46,15 +46,14 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
 
     void Start()
     {
-        _source = GetComponent<CustomImageSource>();
-        _source.Init();
-        
         SceneManager.sceneLoaded += OnSceneLoaded;
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _source = GetComponent<CustomImageSource>();
+        _source.Init();
         _pipeline = new FacePipeline(_resources);
         _material = new Material(_shader);
     }
