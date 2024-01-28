@@ -89,6 +89,7 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
 
     void LateUpdate()
     {
+        if (!_faceUI) return;
         // Processing on the face pipeline
         _pipeline.ProcessImage(_source.Texture);
 
