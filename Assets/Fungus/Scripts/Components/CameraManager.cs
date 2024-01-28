@@ -227,7 +227,13 @@ namespace Fungus
                 if (fadeTween != null)
                 {
                     LeanTween.cancel(fadeTween.id, true);
+                    fadeTween = null;
                 }
+            
+            var twn = GetComponent<LeanTween>();
+            if (twn == null)
+                gameObject.AddComponent<LeanTween>();
+
                 fadeTween = LeanTween.value(fadeAlpha, targetAlpha, fadeDuration)
                     .setEase(leanTweenType)
                     .setOnUpdate((x) => fadeAlpha = x)

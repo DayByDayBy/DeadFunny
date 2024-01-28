@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Fungus;
 
 public class SoundDetector : Madd.Singleton<SoundDetector>
@@ -22,6 +23,12 @@ public class SoundDetector : Madd.Singleton<SoundDetector>
 
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         _audio = GetComponent<AudioSource>();
 
         _audio.clip = Microphone.Start(Microphone.devices[0], true, 180, 44100);
@@ -37,7 +44,7 @@ public class SoundDetector : Madd.Singleton<SoundDetector>
         _vol *= _sensitivity - _offset;
 
         // lerp last volume
-        _vol = Mathf.Lerp(_lastVolume, _vol, .01f);
+        _vol = Mathf.Lerp(_lastVolume, _vol, .05f);
         _lastVolume = _vol;
 
         if (_settingMaxVolume)

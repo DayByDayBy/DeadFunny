@@ -51,13 +51,13 @@ public class EntityWacker : MonoBehaviour
                 {
                     // if the collider is a target, wack it
                     target.Die();
-                    _gameController.ChooseNextTarget();
                     collider.GetComponent<Rigidbody>().AddForce(wackDir * _wackForce + Vector3.up * _wackForce, ForceMode.Impulse);
                     collider.GetComponent<Rigidbody>().AddTorque(wackDir * _wackForce, ForceMode.Impulse);
                     _audioSource.clip = _wackSound;
                     _audioSource.Play();
                     StartCoroutine(DeathNoiseCO());
                 }
+                print("Can Kill: " + _gameController.CanKill);
                 if (!_gameController.CanKill)
                 {
                     switch (_warnings)

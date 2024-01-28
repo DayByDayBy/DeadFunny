@@ -257,19 +257,19 @@ AudioSource:
   m_GameObject: {fileID: 110631112}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4e703b74571974bc4bfb9db215c07274, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0
+  MaxDistance: 0.1
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -334,7 +334,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 1289098664}
   - component: {fileID: 1289098671}
   - component: {fileID: 1289098672}
+  - component: {fileID: 1289098673}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -875,7 +876,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1289098666}
   selectedCommands:
-  - {fileID: 1289098672}
+  - {fileID: 1289098673}
   variables: []
   description: bouncer camera configuration
   stepPause: 0
@@ -990,7 +991,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: ec156e1589f50447aa6c4b8162165208, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1124,6 +1125,7 @@ MonoBehaviour:
   eventHandler: {fileID: 1289098664}
   commandList:
   - {fileID: 1289098665}
+  - {fileID: 1289098673}
   - {fileID: 1289098672}
   - {fileID: 1289098671}
   suppressAllAutoSelections: 0
@@ -1216,7 +1218,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: eb20f55dd484f4f9f926c0b71546052a, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1274,7 +1276,7 @@ MonoBehaviour:
   sceneNameOLD: 
 --- !u!114 &1289098672
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1292,6 +1294,33 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
+--- !u!114 &1289098673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289098653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 18
+  indentLevel: 0
+  storyText: The comedian's almost finished, you've only got 3 minutes left
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: 9cfb7652a0d1f457896ae365499fc84e, type: 3}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1305541198
 GameObject:
   m_ObjectHideFlags: 0

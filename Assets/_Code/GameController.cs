@@ -72,9 +72,9 @@ public class GameController : Madd.Singleton<GameController>
             entity.Laugh();
             entity.GetComponent<EntityWander>().FaceDirection(_comedian.transform.position);
         }
-        StartCoroutine(CompleteLaughTrack());
         CanKill = true;
         _targetUI.text = "Kill";
+        StartCoroutine(CompleteLaughTrack());
     }
 
     IEnumerator CompleteLaughTrack()
@@ -102,6 +102,24 @@ public class GameController : Madd.Singleton<GameController>
         if (_targets.Count > 0)
         {
             _currentTarget = _targets[Random.Range(0, _targets.Count)];
+        }
+        else
+        {
+            _currentTarget = _comedian;
+        }
+        // count all the alive entities
+        int aliveCount = 0;
+        foreach (var entity in _targets)
+        {
+            if (entity._alive)
+                aliveCount++;
+        }
+        if (_comedian._alive)
+            aliveCount++;
+
+        if (aliveCount == 0)
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("load_end");
         }
     }
 
