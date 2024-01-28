@@ -26,6 +26,7 @@ public class EntityWacker : MonoBehaviour
     void Update()
     {
         Entity target = _gameController._currentTarget;
+        if (!target) return;
         bool canHit = Vector3.Angle(transform.forward, target.transform.position - transform.position) < _angle;
         if (target && canHit && _canWack)
         {

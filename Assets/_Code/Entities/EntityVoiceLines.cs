@@ -17,11 +17,10 @@ public class EntityVoiceLines : MonoBehaviour
 
     #endregion
 
-    void Start()
+    void Awake()
     {
         _entity = GetComponent<Entity>();
         _audioSource = GetComponent<AudioSource>();
-        StartCoroutine(VoiceLines());
     }
 
     public void StartVoiceLines()

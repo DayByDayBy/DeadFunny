@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class Entity : MonoBehaviour
 {
     #region member variables
@@ -20,21 +21,21 @@ public class Entity : MonoBehaviour
         _entityWander = GetComponent<EntityWander>();
         _entityVoiceLines = GetComponent<EntityVoiceLines>();
 
-       if (_entityVoiceLines) 
-       {
-            _entityVoiceLines.OnVoiceLineCompleted += OnVoiceLineCompleted;
-            _entityVoiceLines.StartVoiceLines();
-       }
-       if (_entityWander)
-       {
-            _entityWander.OnWanderCompleted += OnWanderCompleted;
-            _entityWander.StartWandering();
-       }
+    //    if (_entityVoiceLines) 
+    //    {
+    //         _entityVoiceLines.OnVoiceLineCompleted += OnVoiceLineCompleted;
+    //         _entityVoiceLines.StartVoiceLines();
+    //    }
+    //    if (_entityWander)
+    //    {
+    //         _entityWander.OnWanderCompleted += OnWanderCompleted;
+    //         _entityWander.StartWandering();
+    //    }
     }
 
     public void Die()
     {
-        _alive = false;
+        if (!_alive) return;
         if (_entityVoiceLines)
         {
         }
@@ -43,15 +44,27 @@ public class Entity : MonoBehaviour
             _entityWander.Die();
         }
         GameController.Instance.RemoveTarget(this);
+        _alive = false;
     }
 
-    void OnVoiceLineCompleted()
+    public void Laugh()
     {
-        _entityVoiceLines.StartVoiceLines();
+        if (!_alive) return;
+        if (_entityWander)
+        {
+            _entityWander.StopWandering();
+            var laughs = new string[] { "Laugh1", "Laugh2", "Laugh3" };
+            GetComponent<Animator>().SetTrigger(laughs[Random.Range(0, laughs.Length)]);
+        }
     }
 
-    void OnWanderCompleted()
-    {
-        _entityWander.StartWandering();
-    }
+    // void OnVoiceLineCompleted()
+    // {
+    //     _entityVoiceLines.StartVoiceLines();
+    // }
+
+    // void OnWanderCompleted()
+    // {
+    //     _entityWander.StartWandering();
+    // }
 }

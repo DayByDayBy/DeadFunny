@@ -9,6 +9,7 @@ public class EntityPointAndClickMove : MonoBehaviour
     #region member variables
 
     public float _speed = 1f;
+    public LayerMask _layerMask;
     public System.Action OnMoveCompleted;
     
     private Entity _entity;
@@ -31,9 +32,9 @@ public class EntityPointAndClickMove : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo))
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hitInfo, _layerMask))
                 {
                     MoveTo(hitInfo.point);
                 }

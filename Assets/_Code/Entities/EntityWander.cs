@@ -15,12 +15,12 @@ public class EntityWander : MonoBehaviour
 
     private Entity _entity;
     private NavMeshAgent _agent;
-    private Vector3 _target, _previousTarget;
+    private Vector3 _target, _previousTarget, _targetDirection;
     private Animator _animator;
 
     #endregion
 
-    void Start()
+    void Awake()
     {
         _entity = GetComponent<Entity>();
         _agent = GetComponent<NavMeshAgent>();
@@ -36,11 +36,16 @@ public class EntityWander : MonoBehaviour
             {
                 OnWanderCompleted?.Invoke();
             }
+            if (_targetDirection != Vector3.zero)
+            {
+                FaceDirection(_targetDirection);
+            }
         }
     }
 
     public void StartWandering()
     {
+        if (!_entity._alive || !_agent) return;
         _previousTarget = _target;
         _target = GetRandomPoint();
         _agent.SetDestination(_target);
@@ -52,6 +57,14 @@ public class EntityWander : MonoBehaviour
     {
         _agent.velocity = Vector3.zero;
         _animator.SetBool("IsWalking", false);
+    }
+
+    public void FaceDirection(Vector3 target)
+    {
+        _targetDirection = target;
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     private Vector3 GetRandomPoint()

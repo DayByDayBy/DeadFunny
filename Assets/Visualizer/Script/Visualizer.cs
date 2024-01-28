@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.Mathematics;
 using Klak.TestTools;
@@ -45,6 +46,13 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
 
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        _source.Init();
         _source = GetComponent<CustomImageSource>();
         _pipeline = new FacePipeline(_resources);
         _material = new Material(_shader);

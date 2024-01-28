@@ -58,7 +58,7 @@ public class CustomImageSource : MonoBehaviour
 
     #region MonoBehaviour implementation
 
-    void Start()
+    public void Init()
     {
 
         _buffer = new RenderTexture
