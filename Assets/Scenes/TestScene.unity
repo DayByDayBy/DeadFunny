@@ -862,7 +862,7 @@ MonoBehaviour:
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 20
+  itemId: 23
   blockName: Load End
   description: 
   eventHandler: {fileID: 87038028}
@@ -4351,7 +4351,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 488693631}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
