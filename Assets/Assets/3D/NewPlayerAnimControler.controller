@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerAnaimationControler
+  m_Name: NewPlayerAnimControler
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsWalking
@@ -156,9 +156,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.007985592
-  m_TransitionOffset: 0.24201441
-  m_ExitTime: 0.9760433
+  m_TransitionDuration: 0.22726756
+  m_TransitionOffset: 0.1363827
+  m_ExitTime: 1.4223869
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -226,7 +226,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature|StabAnim
-  m_Speed: 1
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2638618190511996801}
@@ -239,7 +239,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2620664758776857831, guid: 1c1fc75dfe507ad498ad2e636f4ad5f5, type: 3}
+  m_Motion: {fileID: -1328772067840915551, guid: 1c1fc75dfe507ad498ad2e636f4ad5f5, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -268,7 +268,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2517152770028793317, guid: 1c1fc75dfe507ad498ad2e636f4ad5f5, type: 3}
+  m_Motion: {fileID: -6228214655391894401, guid: 2259d8db52efb8c43b9b7cda96f6b6e6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -294,7 +294,7 @@ AnimatorStateMachine:
     m_Position: {x: 780, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5586737087590529721}
-    m_Position: {x: 710, y: 0, z: 0}
+    m_Position: {x: 770, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
