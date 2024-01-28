@@ -51,6 +51,11 @@ public class GameController : Madd.Singleton<GameController>
         {
             Fungus.Flowchart.BroadcastFungusMessage("smile_more");
         }
+        yield return new WaitForSeconds(2);
+        if (SoundDetector.Instance.GetVolumeNormalized() < .8f)
+        {
+            Fungus.Flowchart.BroadcastFungusMessage("laugh_more");
+        }
         StartCoroutine(SmileCheckCO());
     }
 
@@ -87,12 +92,12 @@ public class GameController : Madd.Singleton<GameController>
             }
         }
         ChooseNextTarget();
-        CanKill = false;
-        _targetUI.text = "Wait";
     }
 
     public void ChooseNextTarget()
     {
+        CanKill = false;
+        _targetUI.text = "Wait";
         if (_targets.Count > 0)
         {
             _currentTarget = _targets[Random.Range(0, _targets.Count)];
