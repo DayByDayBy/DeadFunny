@@ -559,7 +559,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: It uses the camera device as image input.
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: We need your laugh mate
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 
