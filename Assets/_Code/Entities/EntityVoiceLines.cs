@@ -49,7 +49,7 @@ public class EntityVoiceLines : MonoBehaviour
             if (_availableClips.Count > 0)
             {
                 // say your line
-                _audioSource.clip = _availableClips[Random.Range(0, _voiceLines.Count)];
+                _audioSource.clip = _availableClips[Random.Range(0, _availableClips.Count)];
                 _availableClips.Remove(_audioSource.clip);
                 _audioSource.Play();
                 // _audioSource.pitch = Random.Range(0.8f, 1.2f);
