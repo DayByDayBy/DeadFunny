@@ -93,7 +93,7 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
     {
         if (!_faceUI) return;
         // Processing on the face pipeline
-        _pipeline.ProcessImage(_source.Texture);
+        _pipeline.ProcessImage(_source.OutputBuffer);
 
         // UI update
         // _mainUI.texture = _source.Texture;

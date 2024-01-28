@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Video;
@@ -6,7 +7,6 @@ public class CustomImageSource : MonoBehaviour
 {
     #region Public property
 
-    public Texture Texture => OutputBuffer;
     public Vector2Int OutputResolution => _outputResolution;
 
     #endregion
@@ -34,8 +34,51 @@ public class CustomImageSource : MonoBehaviour
     WebCamTexture _webcam;
     RenderTexture _buffer;
 
-    RenderTexture OutputBuffer
+    public RenderTexture OutputBuffer
       => _buffer;
+
+    IEnumerator Start()
+    {
+        FindWebCams();
+
+        yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
+        if (Application.HasUserAuthorization(UserAuthorization.WebCam))
+        {
+            Debug.Log("webcam found");
+        }
+        else
+        {
+            Debug.Log("webcam not found");
+        }
+
+        FindMicrophones();
+
+        yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
+        if (Application.HasUserAuthorization(UserAuthorization.Microphone))
+        {
+            Debug.Log("Microphone found");
+        }
+        else
+        {
+            Debug.Log("Microphone not found");
+        }
+    }
+
+    void FindWebCams()
+    {
+        foreach (var device in WebCamTexture.devices)
+        {
+            Debug.Log("Name: " + device.name);
+        }
+    }
+
+    void FindMicrophones()
+    {
+        foreach (var device in Microphone.devices)
+        {
+            Debug.Log("Name: " + device);
+        }
+    }
 
     // Blit a texture into the output buffer with aspect ratio compensation.
     void Blit(Texture source, bool vflip = false)
@@ -60,20 +103,24 @@ public class CustomImageSource : MonoBehaviour
 
     public void Init()
     {
-        if (_webcam != null) Destroy(_webcam);
+        if (_webcam == null) ResetCamera();
+        _webcam.Play();
+
         if (_buffer != null) Destroy(_buffer);
         
         _buffer = new RenderTexture
             (_outputResolution.x, _outputResolution.y, 0);
+    }
 
+    public void ResetCamera()
+    {
+        print("Resetting Camera");
         // select the first webcam
-        if (_webcamName == "")
-            _webcamName = WebCamTexture.devices[0].name;
+        _webcamName = WebCamTexture.devices[0].name;
 
         _webcam = new WebCamTexture
             (_webcamName,
             _webcamResolution.x, _webcamResolution.y, _webcamFrameRate);
-        _webcam.Play();
     }
 
     void OnDestroy()
@@ -84,6 +131,7 @@ public class CustomImageSource : MonoBehaviour
 
     void Update()
     {
+        if (!_webcam) return;
         Blit(_webcam, _webcam.videoVerticallyMirrored);
     }
 
