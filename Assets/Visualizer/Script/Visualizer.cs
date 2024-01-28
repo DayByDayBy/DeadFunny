@@ -81,6 +81,11 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
                 _faceSet = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnDestroy()
