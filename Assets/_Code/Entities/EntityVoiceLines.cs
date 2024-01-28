@@ -36,7 +36,7 @@ public class EntityVoiceLines : MonoBehaviour
 
     private IEnumerator VoiceLines()
     {
-        if (_entity._alive)
+        if (_entity && _entity._alive)
         {
             // wait for a bit
             yield return new WaitForSeconds(Random.Range(_minTimeBetweenVoiceLines, _maxTimeBetweenVoiceLines));

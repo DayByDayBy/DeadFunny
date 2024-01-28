@@ -50,7 +50,6 @@ public class EntityWander : MonoBehaviour
 
     public void StopWandering()
     {
-        _agent.SetDestination(transform.position);
         _agent.velocity = Vector3.zero;
         _animator.SetBool("IsWalking", false);
     }
@@ -75,5 +74,12 @@ public class EntityWander : MonoBehaviour
         Gizmos.DrawWireSphere(_previousTarget, 0.5f);
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(_previousTarget, _target);
+    }
+
+    public void Die()
+    {
+        StopWandering();
+        _animator.enabled = false;
+        _agent.enabled = false;
     }
 }

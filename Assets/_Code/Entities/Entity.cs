@@ -32,6 +32,19 @@ public class Entity : MonoBehaviour
        }
     }
 
+    public void Die()
+    {
+        _alive = false;
+        if (_entityVoiceLines)
+        {
+        }
+        if (_entityWander)
+        {
+            _entityWander.Die();
+        }
+        GameController.Instance.RemoveTarget(this);
+    }
+
     void OnVoiceLineCompleted()
     {
         _entityVoiceLines.StartVoiceLines();

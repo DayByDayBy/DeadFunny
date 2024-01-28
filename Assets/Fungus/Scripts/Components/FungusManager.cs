@@ -90,11 +90,11 @@ namespace Fungus
         {
             get
             {
-                if (applicationIsQuitting) 
-                {
-                    Debug.LogWarning("FungusManager.Instance() was called while application is quitting. Returning null instead.");
-                    return null;
-                }
+                // if (applicationIsQuitting) 
+                // {
+                //     Debug.LogWarning("FungusManager.Instance() was called while application is quitting. Returning null instead.");
+                //     return null;
+                // }
 
                 // Use "double checked locking" algorithm to implement the singleton for this "FungusManager" class, which can improve performance.
                 if (instance == null)

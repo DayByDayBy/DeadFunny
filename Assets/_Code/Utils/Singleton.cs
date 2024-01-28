@@ -19,11 +19,11 @@ namespace Madd {
         {
             get
             {
-                if (Quitting)
-                {
-                    Debug.LogWarning($"[{nameof(Singleton)}<{typeof(T)}>] Instance will not be returned because the application is quitting.");
-                    return null;
-                }
+                // if (Quitting)
+                // {
+                //     Debug.LogWarning($"[{nameof(Singleton)}<{typeof(T)}>] Instance will not be returned because the application is quitting.");
+                //     return null;
+                // }
                 lock (Lock)
                 {
                     if (_instance != null)
@@ -69,6 +69,7 @@ namespace Madd {
         #region  Methods
         private void OnApplicationQuit()
         {
+            print("Application is quitting");
             Quitting = true;
         }
         #endregion

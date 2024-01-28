@@ -20,7 +20,7 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
     [SerializeField] Shader _shader = null;
     [Space]
     // [SerializeField] RawImage _mainUI = null;
-    [SerializeField] RawImage _faceUI = null;
+    public RawImage _faceUI = null;
     // [SerializeField] RawImage _leftEyeUI = null;
     // [SerializeField] RawImage _rightEyeUI = null;
 
@@ -70,11 +70,6 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
                 Fungus.Flowchart.BroadcastFungusMessage ("smile_ok");
                 _faceSet = true;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetScreenshot();
         }
     }
 
@@ -169,6 +164,16 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
     public void SetSmile()
     {
         _settingFace = true;
+    }
+
+    public bool FaceSet()
+    {
+        return _faceSet;
+    }
+
+    public float GetSimilarity()
+    {
+        return _similarity;
     }
 
     public void GetScreenshot()
