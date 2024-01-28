@@ -52,6 +52,8 @@ public sealed class Visualizer : Madd.Singleton<Visualizer>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (_pipeline != null) _pipeline.Dispose();
+        if (_material != null) Destroy(_material);
         _source = GetComponent<CustomImageSource>();
         _source.Init();
         _pipeline = new FacePipeline(_resources);
