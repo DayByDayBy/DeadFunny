@@ -16,6 +16,7 @@ public class SoundDetector : Madd.Singleton<SoundDetector>
     public bool _settingMaxVolume = false;
 
     private AudioSource _audio;
+    private float _lastVolume = 0;
 
     #endregion
 
@@ -34,6 +35,10 @@ public class SoundDetector : Madd.Singleton<SoundDetector>
     {
         _vol = GetRMS(0) + GetRMS(1);
         _vol *= _sensitivity - _offset;
+
+        // lerp last volume
+        _vol = Mathf.Lerp(_lastVolume, _vol, .01f);
+        _lastVolume = _vol;
 
         if (_settingMaxVolume)
         {

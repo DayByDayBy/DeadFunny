@@ -52,7 +52,7 @@ public class GameController : Madd.Singleton<GameController>
             Fungus.Flowchart.BroadcastFungusMessage("smile_more");
         }
         yield return new WaitForSeconds(2);
-        if (SoundDetector.Instance.GetVolumeNormalized() < .8f)
+        if (CanKill && SoundDetector.Instance.GetVolumeNormalized() < .8f)
         {
             Fungus.Flowchart.BroadcastFungusMessage("laugh_more");
         }
@@ -65,6 +65,7 @@ public class GameController : Madd.Singleton<GameController>
         GetComponent<AudioSource>().clip = _laughTracks[Random.Range(0, _laughTracks.Count)];
         GetComponent<AudioSource>().Play();
         GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+        _comedian.GetComponent<Animator>().SetTrigger("Joke");
         // get entities to stop, laugh and face the comedian
         foreach (var entity in _targets)
         {

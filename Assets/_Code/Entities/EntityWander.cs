@@ -36,7 +36,7 @@ public class EntityWander : MonoBehaviour
             {
                 OnWanderCompleted?.Invoke();
             }
-            if (_targetDirection != Vector3.zero)
+            if (_targetDirection != Vector3.zero && GameController.Instance.CanKill)
             {
                 FaceDirection(_targetDirection);
             }

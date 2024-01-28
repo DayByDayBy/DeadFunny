@@ -58,6 +58,22 @@ public class EntityWacker : MonoBehaviour
                     _audioSource.Play();
                     StartCoroutine(DeathNoiseCO());
                 }
+                if (!_gameController.CanKill)
+                {
+                    switch (_warnings)
+                    {
+                        case 1:
+                        Fungus.Flowchart.BroadcastFungusMessage("warning_1");
+                        break;
+                        case 2:
+                        Fungus.Flowchart.BroadcastFungusMessage("warning_2");
+                            break;
+                        case 3:
+                        Fungus.Flowchart.BroadcastFungusMessage("warning_3");
+                        break;
+                    }
+                    _warnings++;
+                }
             }
         }
     }
@@ -80,22 +96,6 @@ public class EntityWacker : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         _audioSource.clip = _deathNoises[Random.Range(0, _deathNoises.Count)];
         _audioSource.Play();
-        if (!_gameController.CanKill)
-        {
-            switch (_warnings)
-            {
-                case 1:
-                Fungus.Flowchart.BroadcastFungusMessage("warning_1");
-                break;
-                case 2:
-                Fungus.Flowchart.BroadcastFungusMessage("warning_2");
-                    break;
-                case 3:
-                Fungus.Flowchart.BroadcastFungusMessage("warning_3");
-                break;
-            }
-            _warnings++;
-        }
         _canWack = true;
     } 
 }

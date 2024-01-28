@@ -224,6 +224,10 @@ namespace Fungus
             }
             else
             {
+                if (fadeTween != null)
+                {
+                    LeanTween.cancel(fadeTween.id, true);
+                }
                 fadeTween = LeanTween.value(fadeAlpha, targetAlpha, fadeDuration)
                     .setEase(leanTweenType)
                     .setOnUpdate((x) => fadeAlpha = x)
