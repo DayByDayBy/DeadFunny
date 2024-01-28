@@ -950,9 +950,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1289098666}
+  - {fileID: 1289098670}
   selectedCommands:
-  - {fileID: 1289098671}
+  - {fileID: 1289098669}
   variables: []
   description: bouncer camera configuration
   stepPause: 0
@@ -1063,7 +1063,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  storyText: Smile for me will ya?
+  storyText: 'Smile for me will ya?
+
+    A big wide-open mouth smile, mind you.'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -1289,7 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: Eh not too bad, now let me hear your laugh
+  storyText: Eh not too bad, now let me hear your laugh.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
