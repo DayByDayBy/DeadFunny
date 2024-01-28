@@ -20,6 +20,7 @@ public class EntityWacker : MonoBehaviour
     private AudioSource _audioSource;
     private bool _canWack = true;
     private int _warnings = 1;
+    private int _wargningBeforeUpdating = 3;
 
     #endregion
 
@@ -72,7 +73,12 @@ public class EntityWacker : MonoBehaviour
                         Fungus.Flowchart.BroadcastFungusMessage("warning_3");
                         break;
                     }
-                    _warnings++;
+                    _wargningBeforeUpdating--;
+                    if (_wargningBeforeUpdating <= 0)
+                    {
+                        _warnings++;
+                        _wargningBeforeUpdating = 3;
+                    }
                 }
             }
         }
