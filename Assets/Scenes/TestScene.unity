@@ -331,6 +331,9 @@ GameObject:
   - component: {fileID: 87038020}
   - component: {fileID: 87038021}
   - component: {fileID: 87038019}
+  - component: {fileID: 87038023}
+  - component: {fileID: 87038022}
+  - component: {fileID: 87038024}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -362,8 +365,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 87038020}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: Fade In
@@ -779,7 +781,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &87038019
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -806,7 +808,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &87038020
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -833,7 +835,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &87038021
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -846,6 +848,76 @@ MonoBehaviour:
   parentBlock: {fileID: 87038020}
   suppressBlockAutoSelect: 0
   message: smile_more
+--- !u!114 &87038022
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87037998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 19
+  indentLevel: 0
+  storyText: You better be laughing at the jokes on time or I will chuck you out
+    pal!
+  description: 
+  character: {fileID: 959028653}
+  portrait: {fileID: 21300000, guid: 2baf6414081ea4c2d99bc16c51fde2e6, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: eb20f55dd484f4f9f926c0b71546052a, type: 3}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &87038023
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87037998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 239
+    y: -68
+    width: 117
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 16
+  blockName: Laugh More
+  description: 
+  eventHandler: {fileID: 87038024}
+  commandList:
+  - {fileID: 87038022}
+  suppressAllAutoSelections: 0
+--- !u!114 &87038024
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87037998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 87038023}
+  suppressBlockAutoSelect: 0
+  message: laugh_more
 --- !u!1001 &131946435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2861,7 +2933,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0965b675e4ad24cf19388e8327f50dbd, type: 3}
   - {fileID: 8300000, guid: 6d6c962a4b52342e7ade15ce833322b0, type: 3}
   _minTimeBetweenVoiceLines: 0
-  _maxTimeBetweenVoiceLines: 2
+  _maxTimeBetweenVoiceLines: 0.5
 --- !u!82 &1234719131
 AudioSource:
   m_ObjectHideFlags: 0
